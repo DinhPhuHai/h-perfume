@@ -1,0 +1,12 @@
+/* 3D Perfume Scene — fixed fullscreen behind everything */
+.perfume-scene-3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.perfume-scene-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

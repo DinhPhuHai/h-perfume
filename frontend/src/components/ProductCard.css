@@ -1,0 +1,188 @@
+/* ═══════════════════════════════════════════════════
+   PRODUCT CARD — H PERFUME  ·  Refined Luxury
+   ═══════════════════════════════════════════════════ */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+/* Subtle inner glow on top edge on hover */
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-md);
+  box-shadow: inset 0 1px 0 rgba(201,168,76,0.0);
+  transition: box-shadow 0.5s ease;
+  pointer-events: none;
+}
+
+.product-card:hover {
+  border-color: rgba(201,168,76,0.2);
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,0.45),
+    0 0 32px rgba(201,168,76,0.08);
+}
+.product-card:hover::after {
+  box-shadow: inset 0 1px 0 rgba(201,168,76,0.25);
+}
+
+/* ── Image ── */
+.product-card-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    #080812 0%,
+    #0e0e18 40%,
+    #0a0a14 100%
+  );
+}
+
+.pc-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card:hover .pc-real-img {
+  transform: scale(1.06);
+}
+
+/* Subtle radial glow behind placeholder */
+.product-card-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgba(201,168,76,0.04) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.product-card:hover .product-card-image::before { opacity: 1; }
+
+.product-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; padding: 20px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card:hover .product-img-placeholder { transform: scale(1.06); }
+
+.product-img-brand {
+  font-size: 9px; color: var(--gold-d);
+  text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700;
+  text-align: center; transition: color 0.35s ease;
+  opacity: 0.7;
+}
+.product-card:hover .product-img-brand { color: var(--gold); opacity: 1; }
+
+/* Elegant perfume bottle SVG icon */
+.product-img-icon {
+  color: var(--gold-d); opacity: 0.28;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; align-items: center; justify-content: center;
+}
+.product-card:hover .product-img-icon {
+  opacity: 0.65; color: var(--gold);
+  transform: scale(1.1) translateY(-4px);
+  filter: drop-shadow(0 4px 12px rgba(201,168,76,0.18));
+}
+
+.product-img-name {
+  font-size: 11px; color: var(--text-f);
+  text-align: center; line-height: 1.45; max-width: 110px;
+  transition: color 0.35s ease;
+}
+.product-card:hover .product-img-name { color: var(--text-m); }
+
+/* ── Badges ── */
+.product-card-image .badge {
+  position: absolute; top: 14px; left: 14px;
+}
+.product-card-image .discount-tag {
+  position: absolute; top: 14px; right: 14px;
+  background: linear-gradient(135deg, #c03535, #9a2020);
+  color: #fff; font-size: 11px; font-weight: 700;
+  padding: 4px 10px; border-radius: 5px;
+  box-shadow: 0 4px 14px rgba(200,50,50,0.25);
+}
+
+/* ── Hover overlay with quick-add ── */
+.product-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(4,4,8,0.88) 0%,
+    rgba(4,4,8,0.2) 55%,
+    transparent 100%
+  );
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 18px; opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.product-card:hover .product-card-overlay { opacity: 1; }
+
+.quick-add {
+  display: flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--gold-d), var(--gold), var(--gold-l));
+  color: #06060a; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 11px 22px; border-radius: 6px;
+  transform: translateY(16px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+.product-card:hover .quick-add { transform: translateY(0); }
+.quick-add:hover { box-shadow: 0 6px 24px rgba(201,168,76,0.35); }
+
+/* ── Info ── */
+.product-card-info {
+  padding: 14px 16px 18px;
+  position: relative; z-index: 1;
+}
+
+.pc-brand {
+  font-size: 9px; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.16em;
+  font-weight: 700; margin-bottom: 5px;
+}
+
+.pc-name {
+  display: block; font-size: 14px; color: var(--text);
+  font-weight: 500; margin-bottom: 9px; line-height: 1.4;
+  transition: color 0.3s ease; text-decoration: none;
+}
+.pc-name:hover { color: var(--gold-l); }
+
+.pc-meta {
+  display: flex; gap: 6px; margin-bottom: 11px; flex-wrap: wrap;
+}
+
+.pc-size, .pc-gender {
+  font-size: 10px; color: var(--text-f);
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 3px 10px; border-radius: 20px;
+  font-weight: 500; letter-spacing: 0.04em;
+}
+
+.pc-price-row {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.pc-price-row .price {
+  font-size: 16px; font-weight: 700; color: var(--gold-l);
+}
